@@ -1,0 +1,9 @@
+// khai báo placeholder css dung chung
+%a {
+  color: red;
+  font-size: 12px;
+}
+
+.b {
+  @extend %a; // use
+}

@@ -1,0 +1,27 @@
+// I. Nội dung bài học
+//     1. Câu lệnh điều kiện if
+//     2. Sử dụng media query trong sass
+//     3. Mixin có content
+// II. Bài toán:
+//     Tạo mixin "screen" giúp responsive dễ hơn
+
+@mixin screen($device) {
+  @if $device == tablet {
+    @media (max-width: 991.98px) {
+      @content;
+    }
+  }
+
+  @if $device == mobile {
+    @media (max-width: 991.98px) {
+      @content;
+    }
+  }
+}
+
+.list {
+  @include screen(mobile) {
+    --column: 1;
+    --spacing: 10px;
+  }
+}

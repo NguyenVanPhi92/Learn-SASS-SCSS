@@ -1,0 +1,18 @@
+// partial: là quy ước đặt tên file
+// ex:
+// _variable
+// _mixins
+// _reset
+// _common
+// _header
+// _navigator
+// _sidebar
+// v.v
+
+// ex:
+// sau khi tạo các file dùng chung rồi thì import vào file khác
+@import './variable'; // import vào file index.scss
+// Quy ước: file variable và file mixin thường được import vào đầu
+// * Lưu ý: dự án mới thì syntax import đã đổi thành use và forward
+@use './variable'; //
+@forward './variable'; // nạp hết các file vào 1 file

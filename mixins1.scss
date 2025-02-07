@@ -1,0 +1,76 @@
+// I. Minxins: Giusp tái sử dụng code khi lập đi lại nhiều lần trong project
+//     1. Không tham số
+//     2. Có tham số
+//         - Tham số mặc định
+//         - Dùng tham số trước đó làm mặt định
+//         - Truyền đối số theo tên
+//     3. Minxins lồng nhau
+// II. Bài toán: Tạo mixin "grid"
+//     - Tạo grid layout có theo hàng và cột
+//     - Có tham số "column" và "spacing"
+//     - Kết hợp sử dụng biến CSS & biến Sass
+
+// 1: Không tham số
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// 2: Có tham số
+@mixin size1($width, $height) {
+  width: $width;
+  height: $height;
+}
+// 2.1: Tham số mặc định
+@mixin size2($width: 200px, $height: 100px) {
+  width: $width;
+  height: $height;
+}
+// 2.2: Dùng tham số trước đó làm mặt định
+@mixin size2($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+// 2.3: Truyền đối số theo tên
+@mixin rounded($tl, $tr: $tl, $br: $tl, $bl: $tl) {
+  border-radius: $tl $tr $br $bl;
+}
+
+// 3: Minxins lồng nhau
+// null: giá trị có thể truyền vào nhưng không bắt buộc
+@mixin move($x, $y: null) {
+  transform: translate($x, $y);
+  @include move(10px); // use
+}
+// II
+@mixin grid($column, $spacing) {
+  --column: #{$column};
+  --spacing: #{$spacing};
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--spacing);
+  margin-left: calc(-1 * var(--spacing));
+
+  //> *: trỏ vào các thằng con trực tiếp
+  > * {
+    width: calc(100% / var(--column) - var(--spacing));
+    margin-left: var(--spacing);
+  }
+}
+
+.center {
+  @include flexCenter; // use
+  @include size1(100px, 100px); // use
+  background-color: red;
+}
+
+.box {
+  @include flexCenter; // use
+  @include size1(100px, 100px); // use
+  @include rounded(10px, 20px, $br: 10px, 40px); // use
+  background-color: blue;
+}
+
+.list {
+  @include grid(4, 30px); // user: 4 cột, cách nhau 30px
+}

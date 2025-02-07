@@ -1,0 +1,31 @@
+// Numbers
+$font: 20px;
+$padding: 20rem;
+$order: 2;
+$z-index: 99;
+
+// String
+$device: 'mobile';
+$font-code: 'monospace';
+$my-name: 'Nguyen Van Phi';
+
+// Colors:
+$color1: green;
+$color2: #f267;
+
+@debug $color2; // log ra ma mau muon xem
+
+// List
+$colors: green blue red orange;
+$break-points: 575px 768px 991px;
+$font-weights: 400 500 600;
+
+// Map (key: vaule)
+$break-point: (
+  'mobile': 575px,
+  'tablet': 768px,
+  'desktop': 991px
+);
+
+// Booblean true or false
+// Null

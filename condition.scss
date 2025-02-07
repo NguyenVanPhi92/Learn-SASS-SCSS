@@ -1,0 +1,51 @@
+$condition: 10 > 10;
+
+// @if @else
+h1 {
+  @if $condition {
+    color: red;
+  } @else {
+    color: blue;
+  }
+}
+
+h1 {
+  color: if($condition, blue, green);
+}
+
+// @each
+$break-points: 575px 786px 991px 1140px 1320px;
+@each $break-point in $break-points {
+  @debug $break-point;
+  @media (min-width: #{$break-point}) {
+    @content;
+  }
+}
+
+$break-points: (
+  'sm': 575px,
+  'md': 768px,
+  'lg': 991px,
+  'xl': 1140px,
+  'xxl': 1320px
+);
+
+// $infix: "sm"...
+// $break-point: 575px...
+@each $infix, $break-point in $break-points {
+  @debug $break-point;
+  @media (min-width: #{$break-point}) {
+    @content;
+  }
+}
+
+// @for
+// start 1 -> 99
+@for $i from 1 to 100 {
+  @debug $i;
+}
+
+// start 1 -> 100
+@for $i from 1 through 100 {
+  @debug $i;
+}
